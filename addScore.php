@@ -21,7 +21,7 @@
                     if((($screenshot_type == 'image/gif')|| ($screenshot_type == 'image/jpeg') ||
                     ($screenshot_type == 'image/pjpeg') || ($screenshot_type == 'image/png')) &&
                     ($screenshot_size > 0) && ($screenshot_size <= GW_MAXFILESIZE)){
-                        if($_FILES['file']['error']==0){
+                        if($_FILES['screenshot']['error']==0){
                             //move the file to the target upload folder
                             $target = GW_UPLOADPATH . $screenshot;
                             if(move_uploaded_file($_FILES['screenshot']['tmp_name'],$target)){
