@@ -14,9 +14,10 @@
         <hr>
 
         <?php
-            define('GW_UPLOADPATH','images/');
+            require_once('appVars.php');
+            require_once('connectVars.php');
             //connect to the database
-            $dbc = mysqli_connect('localhost','root','','gwdb')
+            $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME)
             or die('Error connecting to MYSQL server');
 
         //get the score data from mysqli

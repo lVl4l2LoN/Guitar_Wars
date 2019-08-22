@@ -7,7 +7,8 @@
     <body>
         <h2>Guitar Wars - Add Your High Score</h2>
         <?php
-            define('GW_UPLOADPATH','images/');
+            require_once('appVars.php');
+            require_once('connectVars.php');
             if(isset($_POST['submit'])){
                 //Get the score data from POST
                 $name = $_POST['name'];
@@ -19,8 +20,9 @@
                     //move the file to the target upload folder
                     $target = GW_UPLOADPATH . $screenshot;
                     if(move_uploaded_file($_FILES['screenshot']['tmp_name'],$target)){
+
                             //connect to the database
-                        $dbc = mysqli_connect('localhost','root','','gwdb');
+                        $dbc = mysqli_connect( DB_HOST ,DB_USER,DB_PASSWORD,DB_NAME);
 
                         //Write to the database
                         $query = "INSERT INTO guitarwars VALUES(0,NOW(),'$name','$score','$screenshot')";
@@ -29,7 +31,8 @@
                         //Confirm success
                         echo '<p>Thanks for adding your new high score!</p>';
                         echo '<p><strong>Name: </strong>' . $name . '<br>';
-                        echo '<strong>Score: </strong>' . $score . '</p>';
+                        echo '<strong>Score: </strong>' . $score . '<br>';
+                        echo '<img src="'.GW_UPLOADPATH. $screenshot.'" alt="Score image"></p>';
                         echo '<p><a href="index.php">&lt;&lt; Back to high scores</a></p>';
 
                         //Clear the score data to clear the form
@@ -44,8 +47,8 @@
                 }
 
                 else{
-                    echo '<p class ="error">Please enter all of the information to add' .
-                    'you high score.</p>';
+                    echo '<p class ="error">Please enter all of the information to add ' .
+                    'your high score.</p>';
                 }
             }
         ?>
