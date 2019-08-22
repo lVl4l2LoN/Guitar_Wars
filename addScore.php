@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Guitar Wars - High Scores</title>
-        <link rel="stylesheets" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
         <h2>Guitar Wars - Add Your High Score</h2>

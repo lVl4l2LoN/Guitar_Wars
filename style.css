@@ -3,6 +3,14 @@
   color: #FF0000;
 }
 
+.topScoreHeader{
+  text-align: center;
+  font-size: 200%;
+  background-color: #36407F;
+  color: #FFFFFF;
+
+}
+
 .score {
   font-size:150%;
   color: #36407F;
