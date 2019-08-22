@@ -15,7 +15,7 @@
 
         <?php
             //connect to the database
-            $dbc = mysqli_connect('local','root','','gwdb')
+            $dbc = mysqli_connect('localhost','root','','gwdb')
             or die('Error connecting to MYSQL server');
 
         //get the score data from mysqli
