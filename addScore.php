@@ -11,13 +11,14 @@
                 //Get the score data from POST
                 $name = $_POST['name'];
                 $score = $_POST['score'];
+                $screenshot = $_FILES['screenshot']['name'];
 
                 if(!empty($name)&&!empty($score)){
                     //connect to the database
                     $dbc = mysqli_connect('localhost','root','','gwdb');
 
                     //Write to the database
-                    $query = "INSERT INTO guitarWars VALUES(0,NOW(),'$name','$score')";
+                    $query = "INSERT INTO guitarwars VALUES(0,NOW(),'$name','$score','$screenshot')";
                     mysqli_query($dbc,$query);
 
                     //Confirm success
@@ -41,11 +42,13 @@
         ?>
         <hr>
         <form method = "POST" action = "<?php echo $_SERVER['PHP_SELF']; ?>">
+            <input type="hidden" name="MAX_FILE_SIZE" value="32768">
             <label for="name">Name: </label>
             <input type="text" id="name" name="name" value="<?php if(!empty($name))echo $name; ?>" ><br>
 
             <label for="score" >Score:</label>
             <input type = "text" id="score" name="score" value="<?php if(!empty($score))echo $score; ?>" >
+            <input type="file" id="screenshot" name="screenshot">
             <hr>
 
             <input type="submit" value = "Add" name="submit" >
