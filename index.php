@@ -30,6 +30,7 @@
             $i = 0;
             while($row=mysqli_fetch_array($data)){
                 //Display the score data
+                //may not work in google chrome
                 if($i==0){
                     echo '<tr><td colspan = "2" class = "topScoreHeader"> Top Score: ' 
                     .$row['score']. '</td></tr>';
