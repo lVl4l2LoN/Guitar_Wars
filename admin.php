@@ -7,6 +7,7 @@
     <body>
         <h2>Guitar Wars - High Scores Administration</h2>
         <p>Below is a list of all Guitar Wars high scores. Use this page to remove scores as needed.</p>
+        <hr>
         <?php
             require_once('appVars.php');
             require_once('connectVars.php');
