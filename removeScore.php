@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Guitar Wars - Remove High Score<title>
+        <title>Guitar Wars - Remove High Score</title>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
 
@@ -47,7 +47,7 @@
                     mysqli_close($dbc);
 
                     //confirm success with the user 
-                    echo '<p> The high score of' . $score .'for' . $name .
+                    echo '<p> The high score of ' . $score .' for ' . $name .
                     ' was successfully removed.</p>';
                 }
                 else{
