@@ -1,4 +1,7 @@
 <!doctype html>
+<?php
+    require_once('authorize.php');
+?>
 <html>
     <head>
         <title>Guitar Wars - Remove High Score</title>
