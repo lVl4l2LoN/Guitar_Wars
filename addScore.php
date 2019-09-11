@@ -10,14 +10,17 @@
             require_once('appVars.php');
             require_once('connectVars.php');
             if(isset($_POST['submit'])){
-                //Get the score data from POST
-                $name = $_POST['name'];
-                $score = $_POST['score'];
-                $screenshot = $_FILES['screenshot']['name'];
+                //connect to the database
+                $dbc = mysqli_connect( DB_HOST ,DB_USER,DB_PASSWORD,DB_NAME);
+
+                    //Get the score data from POST
+                $name = mysqli_real_escape_string($dbc,trim($_POST['name']));
+                $score = mysqli_real_escape_string($dbc, trim($_POST['score']));
+                $screenshot = mysqli_real_escape_string($dbc, trim($_FILES['screenshot']['name']));
                 $screenshot_type = $_FILES['screenshot']['type'];
                 $screenshot_size = $_FILES['screenshot']['size'];
 
-                if(!empty($name)&&!empty($score)&&!empty($screenshot)){
+                if(!empty($name)&&is_numeric($score)&&!empty($screenshot)){
                     if((($screenshot_type == 'image/gif')|| ($screenshot_type == 'image/jpeg') ||
                     ($screenshot_type == 'image/pjpeg') || ($screenshot_type == 'image/png')) &&
                     ($screenshot_size > 0) && ($screenshot_size <= GW_MAXFILESIZE)){
@@ -26,11 +29,9 @@
                             $target = GW_UPLOADPATH . $screenshot;
                             if(move_uploaded_file($_FILES['screenshot']['tmp_name'],$target)){
 
-                                    //connect to the database
-                                $dbc = mysqli_connect( DB_HOST ,DB_USER,DB_PASSWORD,DB_NAME);
-
                                 //Write to the database
-                                $query = "INSERT INTO guitarwars VALUES(0,NOW(),'$name','$score','$screenshot')";
+                                $query = "INSERT INTO guitarwars (date, name,score,screenshot)
+                                          VALUES(NOW(),'$name','$score','$screenshot')";
                                 mysqli_query($dbc,$query);
 
                                 //Confirm success
@@ -74,7 +75,8 @@
             <input type="text" id="name" name="name" value="<?php if(!empty($name))echo $name; ?>" ><br>
 
             <label for="score" >Score:</label>
-            <input type = "text" id="score" name="score" value="<?php if(!empty($score))echo $score; ?>" >
+            <input type = "text" id="score" name="score" value="<?php if(!empty($score))echo $score; ?>" ><br>
+            <label for="screenshot">Screen Shot: </label>
             <input type="file" id="screenshot" name="screenshot">
             <hr>
 

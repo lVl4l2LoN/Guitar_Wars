@@ -3,16 +3,12 @@ CREATE TABLE `guitarwars` (
   `date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `name` VARCHAR(32),
   `score` INT,
+  `screenshot` VARCHAR(64),
+  `approved` TINYINT(1) DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `name` (`name`)
 );
 
-INSERT INTO `guitarwars` VALUES (1, '2008-04-22 14:37:34', 'Paco Jastorius', 127650);
-INSERT INTO `guitarwars` VALUES (2, '2008-04-22 21:27:54', 'Nevil Johansson', 98430);
-INSERT INTO `guitarwars` VALUES (3, '2008-04-23 09:06:35', 'Eddie Vanilli', 345900);
-INSERT INTO `guitarwars` VALUES (4, '2008-04-23 09:12:53', 'Belita Chevy', 282470);
-INSERT INTO `guitarwars` VALUES (5, '2008-04-23 09:13:34', 'Ashton Simpson', 368420);
-INSERT INTO `guitarwars` VALUES (6, '2008-04-23 14:09:50', 'Kenny Lavitz', 64930);
 INSERT INTO `guitarwars` VALUES (21, '2008-05-01 20:36:07', 'Belita Chevy', 282470, 'belitasscore.gif', 1);
 INSERT INTO `guitarwars` VALUES (22, '2008-05-01 20:36:45', 'Jacob Scorcherson', 389740, 'jacobsscore.gif', 1);
 INSERT INTO `guitarwars` VALUES (23, '2008-05-01 20:37:02', 'Nevil Johansson', 98430, 'nevilsscore.gif', 1);

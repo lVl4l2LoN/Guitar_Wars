@@ -32,8 +32,13 @@
                 echo '<td>' . $row['score'] . '</td>';
                 echo '<td><a href="removeScore.php?id=' . $row['id'] . '&amp;date=' . $row['date'] . 
                 '&amp;name=' . $row['name'] . '&amp;score=' . $row['score'] . '&amp;screenshot=' . 
-                $row['screenshot'] . '"> Remove</a></td></tr>';
-
+                $row['screenshot'] . '"> Remove</a>';
+                if($row['approved'] =='0'){
+                    echo '/ <a href="approveScore.php?id=' . $row['id'] . '&amp;date=' . $row['date'] . 
+                    '&amp;name=' . $row['name'] . '&amp;score=' . $row['score'] . '&amp;screenshot=' . 
+                    $row['screenshot'] . '"> Approve</a>';
+                }
+                echo'</td></tr>';
             }
             echo '</table>';
             mysqli_close($dbc);

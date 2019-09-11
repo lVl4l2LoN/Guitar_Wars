@@ -21,7 +21,7 @@
             or die('Error connecting to MYSQL server');
 
         //get the score data from mysqli
-            $query = "SELECT * FROM guitarwars ORDER BY score DESC";
+            $query = "SELECT * FROM guitarwars WHERE approved = 1 ORDER BY score DESC";
             $data = mysqli_query($dbc,$query)
             or die('Error querying database');
 
